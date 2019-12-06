@@ -1,2 +1,109 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
+
+struct Element{
+    string data;#include <iostream>#include <iostream>
+using namespace std;
+using namespace std;
+    Element *next;
+};
+
+class MyStack {
+    private:
+	Element *head=NULL;
+
+
+    public:
+    bool isEmpty(){
+        if(head==NULL){
+        	return true;}
+        	else return false;
+		}
+
+    void push(string *databaru){
+			Element *baru=new Element;
+	    	baru->data=*databaru;
+	        baru->next=head;
+	        head=baru;
+	        cout<<"Data Masuk\n"<<endl;#include <iostream>
+using namespace std;
+    }
+    void pop(){
+    	if(isEmpty()==false){
+    		Element *baru=new Element;
+    		baru=head;
+			head=head->next;
+			delete baru;
+			cout<<"Data dihapus\n"<<endl;
+        } else {
+            cout<<"Riwayat Kosong"<<endl;
+        }
+    }
+    void printStackList(){
+    	Element *bantu;
+    	bantu=head;
+
+        if (isEmpty()==false){
+            while(bantu!=NULL){
+            	cout<<bantu->data<<endl;
+            	bantu=bantu->next;
+			}
+        } else {
+            cout<<"Riwayat Kosong"<<endl;
+        }
+    }
+    string getTop(){
+    	Element *top=head;
+        return top->data;
+    }
+};
+
+int main()
+{
+    MyStack s;
+    int pil;
+	string databaru;
+	do{
+		cout<<"Riwayat Panggilan Telepon"<<endl;
+		cout<<"-----------"<<endl<<endl;
+		cout<<"(1) Masukkan nomor telepon baru"<<endl;
+		cout<<"(2) Hapus riwayat terakhir"<<endl;
+		cout<<"(3) Panggilan terakhir"<<endl;
+		cout<<"(4) Tampilkan seluruh riwayat panggilan"<<endl;
+		cout<<"(5) Exit"<<endl;
+		cout<<"Masukkan pilihan anda : ";
+		cin>>pil;
+		switch(pil){
+			case 1:cout<<"Nomor telepon baru : ";
+			cin>>databaru;
+			cout<<endl;
+			s.push(&databaru);break;
+#include <iostream>
+using namespace std;
+			case 2:
+			cout<<endl;
+			s.pop();
+			break;
+
+			case 3:
+			cout<<endl;
+			if(s.isEmpty()==false){
+			cout<<s.getTop()<<endl;
+			}else{
+				cout<<"Riwayat kosong";
+				}
+			cout<<endl;break;
+
+			case 4:
+			cout<<endl;
+			s.printStackList();
+			break;
+
+			default:cout<<"\tselesai";break;
+
+		}
+	}
+	while (pil!=5);
+	cout<<endl;
+}
